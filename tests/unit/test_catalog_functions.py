@@ -130,14 +130,18 @@ def test_get_indexes(faux_conn):
 
 
 def test_no_table_pk_constraint(faux_conn):
-    # BigQuery doesn't do that.
+    # TODO: need to create a table with a primary key to test this.
+    # if no table is created, the new implemented function will not find
+    # this table and fail
     assert faux_conn.dialect.get_pk_constraint(faux_conn, "foo") == (
         dict(constrained_columns=[])
     )
 
 
 def test_no_table_foreign_keys(faux_conn):
-    # BigQuery doesn't do that.
+    # TODO: need to create a table with a foreign key to test this.
+    # if no table is created, the new implemented function will not find
+    # this table and fail
     assert faux_conn.dialect.get_foreign_keys(faux_conn, "foo") == []
 
 
